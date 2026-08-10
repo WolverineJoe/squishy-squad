@@ -15,7 +15,7 @@
 
 <style>
 /* ==========================================================================
-   SQUISHY SQUAD ‚Äî design tokens
+   SQUISHY SQUAD &mdash; design tokens
    Palette: matte pastel, foam-not-flat. One high-saturation accent (--zap)
    that is ONLY allowed to appear at reward moments: box opening, reveal,
    mastery, table completion. If --zap is on screen, something good happened.
@@ -138,7 +138,7 @@ h1,h2,h3,p{margin:0}
   transition:width .7s cubic-bezier(.2,.9,.3,1)}
 .meter.gold i{background:var(--zap)}
 
-/* the quest card ‚Äî the only place a real-world prize is named */
+/* the quest card &mdash; the only place a real-world prize is named */
 .quest{border:2px solid var(--teal);position:relative;overflow:hidden}
 .quest.done{background:var(--zap)}
 .quest-meter{margin-top:12px}
@@ -478,7 +478,7 @@ html[data-motion="off"] *,html[data-motion="off"] *::before,html[data-motion="of
 const APP_NAME = "Squishy Squad";
 
 /* ==========================================================================
-   COIN ECONOMY  ‚Äî tuned against a 30-session simulation of both a confident
+   COIN ECONOMY  -- tuned against a 30-session simulation of both a confident
    and a struggling learner. Both land inside "one box per session or two":
      confident learner  ~28 coins/session -> a box every 1.3 sessions
      struggling learner ~24 coins/session -> a box every 1.5 sessions
@@ -518,13 +518,13 @@ const MASTER_BOX   = 4, MASTER_HITS = 3, MASTER_DAYS = 3;
    1. We time TO THE FIRST KEYPRESS, not to "enter". Typing 84 takes longer
       than typing 8, and that difference is thumbs, not knowledge. First
       keypress is the moment she retrieved the answer.
-   2. Typed answers only. Multiple choice is untimed ‚Äî reading four options
+   2. Typed answers only. Multiple choice is untimed -- reading four options
       is reading speed, not recall.
    3. The MEDIAN OF THE LAST 3 decides, never a single answer. One 12-second
       response is someone talking to her, not a gap in her 4s.
    4. Timing is VOIDED if she opened a hint, or if the app went to the
       background mid-question, or if the answer took over a minute. A voided
-      question still counts for correctness ‚Äî it just doesn't get a stopwatch.
+      question still counts for correctness -- it just doesn't get a stopwatch.
    5. Slow-but-correct still PROMOTES the fact (a right answer is never walked
       back) but caps its SCHEDULING box at 3, so it keeps coming back every
       couple of sessions until it's quick.
@@ -532,7 +532,7 @@ const MASTER_BOX   = 4, MASTER_HITS = 3, MASTER_DAYS = 3;
       decides when she sees a fact again; f.peak (uncapped) decides whether it
       counts as learned. Gating the visible counter on speed was the first
       thing I tried and a simulated slower learner sat at "0 of 66 learned"
-      for fifteen straight sessions ‚Äî a fortnight of work showing nothing.
+      for fifteen straight sessions -- a fortnight of work showing nothing.
       She now gets credit for being right on the old timeline, and the app
       quietly keeps drilling whatever is still slow.
    7. She is never shown any of this. No timer, no "too slow", nothing.
@@ -546,7 +546,7 @@ const FLUENCY = {
   WINDOW:        3,   // how many of them the median looks at
   CAP_BOX:       3,   // ceiling for a fact that isn't fluent yet
   /* Escape hatch. If she's answered a fact correctly this many times and it's
-     still not quick, stop holding it down ‚Äî endless drilling of one fact is
+     still not quick, stop holding it down -- endless drilling of one fact is
      its own kind of punishment. The parent report still shows it as slow. */
   PATIENCE:     12
 };
@@ -586,7 +586,7 @@ const BLUSH = (y,gap,c)=>{gap=gap||24;c=c||"#EF93A8";return `<ellipse cx="${50-g
 const BLOB = (f,s)=>`<path d="M50 10c22 0 37 14 37 33 0 23-16 39-37 39S13 66 13 43C13 24 28 10 50 10z" fill="${f}"/>${shade(50,72,28,11,s)}${sheen(35,32)}`;
 
 const SQUISHIES = [
-/* ---------- COMMON (12) ‚Äî the everyday shelf-fillers ---------- */
+/* ---------- COMMON (12) -- the everyday shelf-fillers ---------- */
 {id:"mochimelon",n:"Melon Mochi",t:"common",bio:"Half melon, half mochi. Refuses to pick a side.",
  art:`${BLOB("#CFE9A8","#9FCB74")}<path d="M24 34q26-9 52 0" stroke="#9FCB74" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M20 48q30-8 60 0" stroke="#9FCB74" stroke-width="3" fill="none" stroke-linecap="round"/>${EYE.dot(39,48)}${EYE.dot(61,48)}${MOUTH.smile(50,58,11)}${BLUSH(57,21)}`},
 
@@ -665,7 +665,7 @@ const SQUISHIES = [
 {id:"voidcat",n:"Voidcat",t:"legendary",bio:"Contains one (1) small universe. Do not squeeze near open windows.",
  art:`<path d="M28 30l-6-18 20 10zM72 30l6-18-20 10z" fill="#2A2438"/><path d="M50 16c20 0 32 14 32 34 0 22-14 36-32 36S18 72 18 50c0-20 12-34 32-34z" fill="#2A2438"/><g fill="#B79BF5"><circle cx="36" cy="34" r="1.8"/><circle cx="64" cy="30" r="1.4"/><circle cx="70" cy="46" r="2"/><circle cx="30" cy="52" r="1.6"/><circle cx="58" cy="70" r="1.5"/><circle cx="42" cy="74" r="1.2"/></g><path d="M26 58c10 6 20-2 30 2s12 10 18 8c-6 12-14 18-24 18-14 0-24-12-24-28z" fill="#4B3E70" opacity=".8"/><ellipse cx="40" cy="48" rx="6" ry="8" fill="#D9FF47"/><ellipse cx="60" cy="48" rx="6" ry="8" fill="#D9FF47"/><ellipse cx="40" cy="48" rx="2" ry="7" fill="#2A2438"/><ellipse cx="60" cy="48" rx="2" ry="7" fill="#2A2438"/>${MOUTH.cat(50,64,13)}<g stroke="#B79BF5" stroke-width="1.6" stroke-linecap="round"><path d="M20 60h-9M22 66l-8 3M80 60h9M78 66l8 3"/></g>`},
 
-/* ---------- TABLE TROPHIES (11) ‚Äî only obtainable by finishing a table ----- */
+/* ---------- TABLE TROPHIES (11) -- only obtainable by finishing a table ----- */
 {id:"tro2",n:"Duo",t:"epic",table:2,bio:"Comes as a pair. Has never once been alone.",
  art:`<circle cx="34" cy="56" r="24" fill="#A9C6F5"/><circle cx="66" cy="56" r="24" fill="#8FB0EE"/>${shade(34,74,17,6,"#7E9BD8")}${shade(66,74,17,6,"#6E8CCB")}${sheen(26,42,8,5)}${EYE.dot(28,52,3.6)}${EYE.dot(40,52,3.6)}${MOUTH.smile(34,62,7)}${EYE.dot(60,52,3.6)}${EYE.dot(72,52,3.6)}${MOUTH.smile(66,62,7)}<text x="50" y="94" font-size="13" font-weight="800" text-anchor="middle" fill="${INK}" font-family="sans-serif">2s</text>`},
 
@@ -696,7 +696,7 @@ const SQUISHIES = [
 {id:"tro8",n:"Octo-Eight",t:"legendary",table:8,bio:"An 8 is just a snowman that gave up on arms. Double, double, double.",
  art:`<path d="M50 12c13 0 22 8 22 18 0 7-4 12-10 15 8 3 14 9 14 18 0 12-11 21-26 21S24 75 24 63c0-9 6-15 14-18-6-3-10-8-10-15 0-10 9-18 22-18z" fill="#E8B96A"/><path d="M50 20c8 0 14 5 14 10s-6 10-14 10-14-5-14-10 6-10 14-10z" fill="#F7DCA8"/><path d="M50 50c11 0 18 6 18 13s-7 13-18 13-18-6-18-13 7-13 18-13z" fill="#F7DCA8"/><g fill="#fff" opacity=".8"><circle cx="38" cy="26" r="1.6"/><circle cx="62" cy="34" r="1.6"/><circle cx="36" cy="60" r="1.6"/><circle cx="66" cy="66" r="1.6"/></g>${EYE.dot(44,62,4)}${EYE.dot(58,62,4)}${MOUTH.smile(51,70,9)}${BLUSH(69,18,"#DFA85C")}<text x="50" y="95" font-size="13" font-weight="800" text-anchor="middle" fill="${INK}" font-family="sans-serif">8s</text>`},
 
-/* ---------- MILESTONE SQUISHIES ‚Äî the two speed clubs ---------------------
+/* ---------- MILESTONE SQUISHIES -- the two speed clubs ---------------------
    Not in any box, not tied to a table. These are the only two you cannot get
    by grinding: every one of the 66 facts has to come back fast. ------------ */
 {id:"clubten",n:"Tick",t:"legendary",milestone:10,bio:"All 66 facts, none of them slow. He was starting to worry about you.",
@@ -807,14 +807,14 @@ function fluencyOf(k){
 const isFluent = k => fluencyOf(k) === "fluent";
 
 /* ==========================================================================
-   THE SPEED CLUBS ‚Äî the one place a real-world prize hangs off the timings.
+   THE SPEED CLUBS -- the one place a real-world prize hangs off the timings.
    Two rungs: every fact under 10 seconds, then every fact under 5. A grown-up
    turns this on and writes what the prize is; nothing is promised otherwise.
 
    A fact only counts once it has at least MIN_SAMPLES typed answers, so she
    can't clear a club on facts the app never actually tested her on. Progress
    is stated as facts-in, never facts-short, and once a club is earned it is
-   earned permanently ‚Äî the date is stamped and it can't be lost to a bad day.
+   earned permanently -- the date is stamped and it can't be lost to a bad day.
    ========================================================================== */
 const CLUBS = [
   {id:"t10", ms:10000, name:"Ten Second Club",  squishy:"clubten",
@@ -837,7 +837,7 @@ function clubStatus(club){
     earned: S.goals && S.goals[club.id] ? S.goals[club.id] : null,
     n: inC.length,
     total: ALL_FACTS.length,
-    /* the ones not in yet, slowest first ‚Äî shown to a grown-up as a worklist,
+    /* the ones not in yet, slowest first -- shown to a grown-up as a worklist,
        and to her only as a count */
     outstanding: ALL_FACTS.filter(k => !clubQualifies(k, club.ms))
       .sort((a,b) => (recallMedian(b) || 1e9) - (recallMedian(a) || 1e9))
@@ -882,55 +882,55 @@ function poolFacts(){
 }
 
 /* ==========================================================================
-   5. STRATEGIES ‚Äî written per fact family. The hard core each get their own.
+   5. STRATEGIES -- written per fact family. The hard core each get their own.
    ========================================================================== */
 const TRICKS = {
-  "7x8": {t:"5, 6, 7, 8", b:"Say it in order: <b>5 6 7 8</b>. That's <b>56 = 7 √ó 8</b>. Best trick in all of math, and it's free."},
-  "6x8": {t:"It rhymes", b:"<b>Six times eight is forty-eight.</b> Say it out loud twice. 6, 8, 48 ‚Äî your mouth remembers this one before your brain does."},
-  "6x7": {t:"42", b:"6 √ó 7 = <b>42</b>, famous for being the answer to everything. Backup: 6 √ó 7 is 7 √ó 7 (49) minus one 7 ‚Üí 42."},
-  "3x7": {t:"Blackjack", b:"7 + 7 + 7 = <b>21</b>. Three sevens is blackjack. Also: 3 √ó 7 = 20 + 1."},
-  "4x7": {t:"Four weeks", b:"7 days a week, 4 weeks a month ‚Üí <b>28</b>. Or double 14 (which is 2 √ó 7)."},
-  "8x9": {t:"Neighbors", b:"<b>72</b>. Use the 9s rule: 9 √ó 8 ‚Üí 8 ‚àí 1 = <b>7</b>, and 10 ‚àí 8 = <b>2</b>. 72. The digits 7 + 2 = 9, always."},
-  "7x9": {t:"9s rule", b:"9 √ó 7 ‚Üí 7 ‚àí 1 = <b>6</b>, then 10 ‚àí 7 = <b>3</b>. <b>63</b>. Digits add to 9. Check it: 6 + 3 = 9."},
-  "7x7": {t:"Squares club", b:"<b>49</b> ‚Äî one less than 50. 7 √ó 7 is a square, and squares are their own little club worth memorizing straight."},
-  "8x8": {t:"Chessboard", b:"A chessboard is 8 by 8 and has <b>64</b> squares. Also: 8 √ó 8 = 8 doubled three times ‚Üí 16, 32, 64."},
+  "7x8": {t:"5, 6, 7, 8", b:"Say it in order: <b>5 6 7 8</b>. That's <b>56 = 7 \u00d7 8</b>. Best trick in all of math, and it's free."},
+  "6x8": {t:"It rhymes", b:"<b>Six times eight is forty-eight.</b> Say it out loud twice. 6, 8, 48 \u2014 your mouth remembers this one before your brain does."},
+  "6x7": {t:"42", b:"6 \u00d7 7 = <b>42</b>, famous for being the answer to everything. Backup: 6 \u00d7 7 is 7 \u00d7 7 (49) minus one 7 \u2192 42."},
+  "3x7": {t:"Blackjack", b:"7 + 7 + 7 = <b>21</b>. Three sevens is blackjack. Also: 3 \u00d7 7 = 20 + 1."},
+  "4x7": {t:"Four weeks", b:"7 days a week, 4 weeks a month \u2192 <b>28</b>. Or double 14 (which is 2 \u00d7 7)."},
+  "8x9": {t:"Neighbors", b:"<b>72</b>. Use the 9s rule: 9 \u00d7 8 \u2192 8 \u2212 1 = <b>7</b>, and 10 \u2212 8 = <b>2</b>. 72. The digits 7 + 2 = 9, always."},
+  "7x9": {t:"9s rule", b:"9 \u00d7 7 \u2192 7 \u2212 1 = <b>6</b>, then 10 \u2212 7 = <b>3</b>. <b>63</b>. Digits add to 9. Check it: 6 + 3 = 9."},
+  "7x7": {t:"Squares club", b:"<b>49</b> \u2014 one less than 50. 7 \u00d7 7 is a square, and squares are their own little club worth memorizing straight."},
+  "8x8": {t:"Chessboard", b:"A chessboard is 8 by 8 and has <b>64</b> squares. Also: 8 \u00d7 8 = 8 doubled three times \u2192 16, 32, 64."},
   "6x6": {t:"Squares club", b:"<b>36</b>. Half of 6 is 3, tack the 6 on: 36. The 6s trick works on itself."},
-  "9x9": {t:"Squares club", b:"<b>81</b>. 9s rule: 9 ‚àí 1 = 8, 10 ‚àí 9 = 1 ‚Üí 81. And 8 + 1 = 9."},
-  "12x12": {t:"A gross", b:"<b>144</b>. 12 dozen is called a gross. Or: 12 √ó 10 = 120, plus 12 √ó 2 = 24 ‚Üí 144."},
-  "11x11": {t:"Not a typo", b:"<b>121</b>. The digit-doubling trick stops working at 11 √ó 11 ‚Äî this one is just worth knowing flat."},
-  "11x12": {t:"End of the 11s", b:"<b>132</b>. 11 √ó 12 = 12 √ó 10 + 12 √ó 2 wait ‚Äî easier: 132 = 120 + 12."},
-  "3x4": {t:"Counting up", b:"<b>12</b> ‚Äî like 3 sets of 4, or a clock face, or a dozen eggs. You already know this number."},
+  "9x9": {t:"Squares club", b:"<b>81</b>. 9s rule: 9 \u2212 1 = 8, 10 \u2212 9 = 1 \u2192 81. And 8 + 1 = 9."},
+  "12x12": {t:"A gross", b:"<b>144</b>. 12 dozen is called a gross. Or: 12 \u00d7 10 = 120, plus 12 \u00d7 2 = 24 \u2192 144."},
+  "11x11": {t:"Not a typo", b:"<b>121</b>. The digit-doubling trick stops working at 11 \u00d7 11 \u2014 this one is just worth knowing flat."},
+  "11x12": {t:"End of the 11s", b:"<b>132</b>. 11 \u00d7 12 = 12 \u00d7 10 + 12 \u00d7 2 wait \u2014 easier: 132 = 120 + 12."},
+  "3x4": {t:"Counting up", b:"<b>12</b> \u2014 like 3 sets of 4, or a clock face, or a dozen eggs. You already know this number."},
   "4x4": {t:"Squares club", b:"<b>16</b>. Double 4 is 8, double again is 16. Two doubles, done."},
   "2x2": {t:"Squares club", b:"<b>4</b>. The smallest square in the club."},
-  "5x5": {t:"Squares club", b:"<b>25</b>. A quarter ‚Äî 25 cents. 5s always land on a 0 or a 5."},
+  "5x5": {t:"Squares club", b:"<b>25</b>. A quarter \u2014 25 cents. 5s always land on a 0 or a 5."},
   "10x10": {t:"Squares club", b:"<b>100</b>. Add the zero and walk away."},
   "3x3": {t:"Squares club", b:"<b>9</b>. Three 3s. Tic-tac-toe board."},
-  "12x6": {t:"Half and double", b:"6 √ó 12 = <b>72</b>. Half of 12 is 6, and 6 √ó 12 is the same as 12 √ó 6 ‚Äî do 12 √ó 10 (120) minus 12 √ó 4... or just: 70 + 2."}
+  "12x6": {t:"Half and double", b:"6 \u00d7 12 = <b>72</b>. Half of 12 is 6, and 6 \u00d7 12 is the same as 12 \u00d7 6 \u2014 do 12 \u00d7 10 (120) minus 12 \u00d7 4... or just: 70 + 2."}
 };
 const TABLE_TRICKS = {
-  10:{t:"Add a zero", b:"Anything √ó 10 is just that number with a <b>0</b> stuck on the end. 10 √ó 7 = 70. That's the whole rule."},
-  11:{t:"Say the digit twice", b:"For single digits, 11 √ó n is just that digit <b>twice</b>. 11 √ó 4 = 44. 11 √ó 8 = 88. Free points."},
-  5: {t:"Half of the tens", b:"Do √ó 10 first, then take <b>half</b>. 5 √ó 8 ‚Üí 80 ‚Üí 40. Every answer ends in 5 or 0."},
-  2: {t:"Just double it", b:"√ó 2 means <b>double</b>. You already do this with everything else in your life."},
-  9: {t:"The finger trick", b:"Hold up ten fingers. For 9 √ó n, bend down the <b>n-th</b> finger. Fingers to the left = tens, fingers to the right = ones. Also: the digits of every 9s answer add up to <b>9</b>."},
-  12:{t:"Ten plus two", b:"12 √ó n = (10 √ó n) + (2 √ó n). 12 √ó 7 ‚Üí 70 + 14 ‚Üí <b>84</b>. Split it, don't memorize it."},
-  4: {t:"Double, then double", b:"√ó 4 is just <b>double it twice</b>. 4 √ó 7 ‚Üí 14 ‚Üí 28. Two easy steps beat one hard one."},
-  8: {t:"Double, double, double", b:"√ó 8 is <b>three</b> doubles. 8 √ó 6 ‚Üí 12 ‚Üí 24 ‚Üí 48. Same move, three times."},
-  6: {t:"Half, then tack it on", b:"6 √ó an even number: take <b>half</b> of the even number, then stick that number on the end. 6 √ó 8 ‚Üí half of 8 is 4 ‚Üí <b>48</b>. 6 √ó 4 ‚Üí 2, then 4 ‚Üí <b>24</b>. It just works."},
-  3: {t:"Double plus one more", b:"√ó 3 = double it, then add one more of it. 3 √ó 7 ‚Üí 14 + 7 ‚Üí <b>21</b>."}
+  10:{t:"Add a zero", b:"Anything \u00d7 10 is just that number with a <b>0</b> stuck on the end. 10 \u00d7 7 = 70. That's the whole rule."},
+  11:{t:"Say the digit twice", b:"For single digits, 11 \u00d7 n is just that digit <b>twice</b>. 11 \u00d7 4 = 44. 11 \u00d7 8 = 88. Free points."},
+  5: {t:"Half of the tens", b:"Do \u00d7 10 first, then take <b>half</b>. 5 \u00d7 8 \u2192 80 \u2192 40. Every answer ends in 5 or 0."},
+  2: {t:"Just double it", b:"\u00d7 2 means <b>double</b>. You already do this with everything else in your life."},
+  9: {t:"The finger trick", b:"Hold up ten fingers. For 9 \u00d7 n, bend down the <b>n-th</b> finger. Fingers to the left = tens, fingers to the right = ones. Also: the digits of every 9s answer add up to <b>9</b>."},
+  12:{t:"Ten plus two", b:"12 \u00d7 n = (10 \u00d7 n) + (2 \u00d7 n). 12 \u00d7 7 \u2192 70 + 14 \u2192 <b>84</b>. Split it, don't memorize it."},
+  4: {t:"Double, then double", b:"\u00d7 4 is just <b>double it twice</b>. 4 \u00d7 7 \u2192 14 \u2192 28. Two easy steps beat one hard one."},
+  8: {t:"Double, double, double", b:"\u00d7 8 is <b>three</b> doubles. 8 \u00d7 6 \u2192 12 \u2192 24 \u2192 48. Same move, three times."},
+  6: {t:"Half, then tack it on", b:"6 \u00d7 an even number: take <b>half</b> of the even number, then stick that number on the end. 6 \u00d7 8 \u2192 half of 8 is 4 \u2192 <b>48</b>. 6 \u00d7 4 \u2192 2, then 4 \u2192 <b>24</b>. It just works."},
+  3: {t:"Double plus one more", b:"\u00d7 3 = double it, then add one more of it. 3 \u00d7 7 \u2192 14 + 7 \u2192 <b>21</b>."}
 };
 const TRICK_PRIORITY = [10,11,5,2,9,12,4,8,6,3];
 
 function trickFor(a,b){
   const k = fkey(a,b);
   if(TRICKS[k]) return TRICKS[k];
-  if(a === b) return {t:"Squares club", b:`<b>${a*b}</b>. ${a} √ó ${a} is a square ‚Äî same number twice. Squares are worth learning as their own set; there are only eleven of them.`};
+  if(a === b) return {t:"Squares club", b:`<b>${a*b}</b>. ${a} \u00d7 ${a} is a square \u2014 same number twice. Squares are worth learning as their own set; there are only eleven of them.`};
   if(a % 2 === 0 || b % 2 === 0){
     const six = (a===6?b:(b===6?a:0));
     if(six && six % 2 === 0) return TABLE_TRICKS[6];
   }
   for(const t of TRICK_PRIORITY){ if(a === t || b === t) return TABLE_TRICKS[t]; }
-  return {t:"Break it apart", b:`Split it: ${a} √ó ${b} = ${a} √ó ${b-1} (${a*(b-1)}) plus one more ${a} ‚Üí <b>${a*b}</b>.`};
+  return {t:"Break it apart", b:`Split it: ${a} \u00d7 ${b} = ${a} \u00d7 ${b-1} (${a*(b-1)}) plus one more ${a} \u2192 <b>${a*b}</b>.`};
 }
 
 /* ==========================================================================
@@ -992,7 +992,7 @@ function buildSession(){
     seq.splice(Math.min(at+5, seq.length), 0, {k:"q", f:k, stage:2});
   });
 
-  // very first sessions can run dry ‚Äî top up with spaced extra reps
+  // very first sessions can run dry -- top up with spaced extra reps
   let scored = seq.filter(x => x.k === "q").length;
   if(scored < len){
     const p2 = newTake.concat(introduced);
@@ -1021,7 +1021,7 @@ function shuffle(arr){
 }
 
 /* plausible distractors: off-by-one-multiple, digit-reversed, adjacent facts.
-   Never random numbers ‚Äî a wrong option should be tempting, not silly. */
+   Never random numbers -- a wrong option should be tempting, not silly. */
 function distractors(a,b){
   const ans = a*b, out = [];
   const push = v => {
@@ -1040,7 +1040,7 @@ function distractors(a,b){
 }
 
 /* ==========================================================================
-   GRADING ‚Äî a miss never subtracts anything. It moves the fact to box 1 and
+   GRADING -- a miss never subtracts anything. It moves the fact to box 1 and
    puts it back in the rotation. That is the entire consequence.
    ========================================================================== */
 function ensureFact(k){
@@ -1064,7 +1064,7 @@ function gradeFact(k, ok, run, ms){
       if(f.rt.length > FLUENCY.KEEP) f.rt = f.rt.slice(-FLUENCY.KEEP);
       if(run.times) run.times.push(ms);
       // right, but still working it out: keep it in circulation rather than
-      // letting it graduate. Never a demotion ‚Äî just a scheduling ceiling.
+      // letting it graduate. Never a demotion -- just a scheduling ceiling.
       // f.peak is untouched, so she still gets credit for being right.
       if(!isFluent(k) && f.hits < FLUENCY.PATIENCE) f.box = Math.min(f.box, FLUENCY.CAP_BOX);
     }
@@ -1084,7 +1084,7 @@ function gradeFact(k, ok, run, ms){
 }
 
 /* ==========================================================================
-   END OF SESSION ‚Äî coins, streak, unlocks, table trophies
+   END OF SESSION -- coins, streak, unlocks, table trophies
    ========================================================================== */
 function finishSession(run){
   const d = today();
@@ -1121,13 +1121,13 @@ function finishSession(run){
     if(S.tablesDone.indexOf(t) < 0 && tableProgress(t) >= 1){
       S.tablesDone.push(t);
       earned += ECON.TABLE;
-      lines.push({label:"The " + t + "s ‚Äî finished", n:ECON.TABLE});
+      lines.push({label:"The " + t + "s \u2014 finished", n:ECON.TABLE});
       const id = TROPHY_FOR[t];
       if(id){ addToCollection(id); trophies.push(id); }
     }
   });
 
-  /* Speed clubs ‚Äî in order, and at most ONE per session even if she clears
+  /* Speed clubs -- in order, and at most ONE per session even if she clears
      both at once. Two clubs means two separate trips out for a prize; folding
      them into a single screen would spend both moments at the same time. */
   const clubsWon = [];
@@ -1137,7 +1137,7 @@ function finishSession(run){
     if(st.n < st.total) break;          // rungs are sequential
     S.goals[c.id] = d;
     earned += c.coins;
-    lines.push({label:c.name + " ‚Äî every fact", n:c.coins});
+    lines.push({label:c.name + " \u2014 every fact", n:c.coins});
     if(c.squishy) addToCollection(c.squishy);
     clubsWon.push(c);
     break;
@@ -1188,7 +1188,7 @@ function openBox(){
 }
 
 /* ==========================================================================
-   PLACEMENT ‚Äî 20 questions, weighted to the easy tables so the first thing
+   PLACEMENT -- 20 questions, weighted to the easy tables so the first thing
    she does in this app is get a run of them right.
    ========================================================================== */
 const PLACE_W = {2:5, 10:5, 5:4, 11:3, 3:3, 4:3, 6:2, 9:2, 8:1, 7:1, 12:1};
@@ -1209,7 +1209,7 @@ function buildPlacement(){
   return picked.map(k => Object.assign({k:"q", f:k}, orient(k)));
 }
 function applyPlacement(results){
-  // results: [{f, ok}]  ‚Äî "not sure" answers are simply left untouched, so
+  // results: [{f, ok}]  -- "not sure" answers are simply left untouched, so
   // the fact still gets its full three-stage introduction later.
   const byTable = {};
   results.forEach(r => {
@@ -1294,7 +1294,7 @@ const COIN_SVG = `<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy
 const MARK_SVG = `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4c10 0 16 6 16 15 0 10-7 17-16 17S4 29 4 19C4 10 10 4 20 4z" fill="#5FC4BB"/><ellipse cx="20" cy="30" rx="11" ry="4" fill="#3E9C95" opacity=".45"/><ellipse cx="14" cy="13" rx="5" ry="3" fill="#fff" opacity=".55" transform="rotate(-24 14 13)"/><circle cx="15" cy="19" r="2.6" fill="#1F3E3C"/><circle cx="25" cy="19" r="2.6" fill="#1F3E3C"/><path d="M16 25q4 4 8 0" stroke="#1F3E3C" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>`;
 
 const PRAISE = ["ok that was fast","yep","locked in","brains: 1, math: 0","you didn't even blink","clean","that's the one","no notes","too easy?","instant","you knew that cold","filed away"];
-const NEUTRAL = ["this one's sneaky","noted ‚Äî it'll be back","that one trips everybody","ok now you know it","adding it to the mix","sneaky little fact","it'll come back around"];
+const NEUTRAL = ["this one's sneaky","noted \u2014 it'll be back","that one trips everybody","ok now you know it","adding it to the mix","sneaky little fact","it'll come back around"];
 const pick = a => a[Math.floor(Math.random()*a.length)];
 
 /* ============================ HOME ======================================= */
@@ -1336,10 +1336,10 @@ function renderHome(){
   const boxBtn = $("#goBox");
   boxBtn.classList.toggle("btn-zap", canBox);
   $("#boxBtnLabel").textContent = canBox ? "Open a box" : "Blind box";
-  $("#goShelf").textContent = owned ? "Shelf ¬∑ " + owned : "Shelf";
+  $("#goShelf").textContent = owned ? "Shelf \u00b7 " + owned : "Shelf";
 }
 
-/* The quest card. Only ever shows a count of facts that are IN ‚Äî never how
+/* The quest card. Only ever shows a count of facts that are IN -- never how
    many are short, never which ones, never a time. */
 function renderQuest(){
   const slot = $("#questSlot");
@@ -1351,7 +1351,7 @@ function renderQuest(){
 
   if(!active){
     slot.innerHTML = `<div class="card quest done">
-      <div class="up">Both clubs ‚Äî done</div>
+      <div class="up">Both clubs \u2014 done</div>
       <div class="display t-xl" style="margin-top:4px">All 66, fast.</div>
       <div class="t-sm" style="margin-top:6px">${prize ? "You earned it: " + esc(prize) : "You earned the real one."}</div>
     </div>`;
@@ -1403,7 +1403,7 @@ function startPlacement(){
   $("#qArea").innerHTML = `
     <div class="qcard" style="min-height:auto">
       <div class="display t-xl">Let's find out what you already know.</div>
-      <p class="soft t-sm" style="max-width:300px">20 quick ones. Nothing here counts for anything ‚Äî it just tells the app which facts to skip so you're not stuck doing baby questions.</p>
+      <p class="soft t-sm" style="max-width:300px">20 quick ones. Nothing here counts for anything \u2014 it just tells the app which facts to skip so you're not stuck doing baby questions.</p>
       <p class="soft t-sm">If you don't know one, hit <b>not sure yet</b>. That's a real answer.</p>
       <button class="btn btn-go pressable" id="placeGo" style="margin-top:6px">Ok, go</button>
     </div>`;
@@ -1449,11 +1449,11 @@ function renderMeet(it){
   $("#qArea").innerHTML = `
     <div class="qcard">
       <div class="up soft">New one</div>
-      <div class="qtext">${a} <small>√ó</small> ${b} <small>=</small> ${ans}</div>
+      <div class="qtext">${a} <small>\u00d7</small> ${b} <small>=</small> ${ans}</div>
       <div class="arraydots" style="grid-template-columns:repeat(${cols},13px)">${dots}</div>
-      <div class="soft t-sm">${a} rows of ${b}. Count by ${a}s: ${skip.join(" ¬∑ ")}${b>6?" ‚Ä¶":""}</div>
+      <div class="soft t-sm">${a} rows of ${b}. Count by ${a}s: ${skip.join(" \u00b7 ")}${b>6?" \u2026":""}</div>
     </div>
-    ${same ? `<div class="saybox"><div class="lede">${a} √ó ${b} and ${b} √ó ${a} are the same fact.</div>
+    ${same ? `<div class="saybox"><div class="lede">${a} \u00d7 ${b} and ${b} \u00d7 ${a} are the same fact.</div>
       <div class="t-sm soft">Flip it around, same answer. That's why there are only <b>66</b> of these to learn instead of 121. You just got one free.</div></div>` : ""}
     <button class="btn btn-go pressable" id="meetGo" style="margin-top:12px">Got it</button>`;
   $("#meetGo").onclick = () => {
@@ -1467,13 +1467,13 @@ function renderMeet(it){
 function renderConcept(it){
   const isOnes = it.which === "ones";
   const n = 2 + Math.floor(Math.random()*11);
-  const title = isOnes ? "Anything √ó 1 stays itself" : "Anything √ó 0 vanishes";
+  const title = isOnes ? "Anything \u00d7 1 stays itself" : "Anything \u00d7 0 vanishes";
   const body  = isOnes
-    ? "One group of something is just‚Ä¶ that something. <b>7 √ó 1 = 7</b>. <b>12 √ó 1 = 12</b>. It never changes. This is a rule, not a fact to memorize ‚Äî you'll never be quizzed on these again after this."
-    : "Zero groups of something is nothing at all. <b>7 √ó 0 = 0</b>. <b>12 √ó 0 = 0</b>. Every single one is 0. Rule, not a fact.";
+    ? "One group of something is just\u2026 that something. <b>7 \u00d7 1 = 7</b>. <b>12 \u00d7 1 = 12</b>. It never changes. This is a rule, not a fact to memorize \u2014 you'll never be quizzed on these again after this."
+    : "Zero groups of something is nothing at all. <b>7 \u00d7 0 = 0</b>. <b>12 \u00d7 0 = 0</b>. Every single one is 0. Rule, not a fact.";
   const vis = isOnes
-    ? `<div class="arraydots" style="grid-template-columns:repeat(6,13px)">${Array(6).fill('<i></i>').join("")}</div><div class="soft t-sm">one group of 6 ‚Üí still 6</div>`
-    : `<div style="height:34px"></div><div class="soft t-sm">zero groups of 6 ‚Üí nothing there</div>`;
+    ? `<div class="arraydots" style="grid-template-columns:repeat(6,13px)">${Array(6).fill('<i></i>').join("")}</div><div class="soft t-sm">one group of 6 \u2192 still 6</div>`
+    : `<div style="height:34px"></div><div class="soft t-sm">zero groups of 6 \u2192 nothing there</div>`;
   $("#qArea").innerHTML = `
     <div class="qcard">
       <div class="up soft">Rule, not a fact</div>
@@ -1488,7 +1488,7 @@ function renderConcept(it){
       S.concepts[isOnes?"ones":"zeros"] = 1;
       if(S.concepts.resurface === it.which) S.concepts.resurface = null;
       save();
-      $("#conceptQ").innerHTML = `<button class="btn btn-go pressable" id="cGo">Locked in ‚Äî keep going</button>`;
+      $("#conceptQ").innerHTML = `<button class="btn btn-go pressable" id="cGo">Locked in \u2014 keep going</button>`;
       $("#cGo").onclick = () => { SFX.tap(); advance(); };
       return;
     }
@@ -1497,7 +1497,7 @@ function renderConcept(it){
     const wrong = isOnes ? 1 : v;
     const opts = shuffle([right, wrong]);
     $("#conceptQ").innerHTML = `
-      <div class="center display t-xl" style="margin-bottom:10px">${v} √ó ${isOnes?1:0} = ?</div>
+      <div class="center display t-xl" style="margin-bottom:10px">${v} \u00d7 ${isOnes?1:0} = ?</div>
       <div class="choices">${opts.map(o=>`<button class="choice pressable" data-v="${o}">${o}</button>`).join("")}</div>
       <div class="center soft t-sm" style="margin-top:8px">${done} of 3</div>`;
     $$("#conceptQ .choice").forEach(btn => btn.onclick = () => {
@@ -1518,7 +1518,7 @@ function renderRule(it){
   const opts = shuffle([right, isOne ? 1 : it.n]);
   $("#qArea").innerHTML = `
     <div class="qcard"><div class="up soft">Quick one</div>
-      <div class="qtext">${it.n} <small>√ó</small> ${isOne?1:0}</div></div>
+      <div class="qtext">${it.n} <small>\u00d7</small> ${isOne?1:0}</div></div>
     <div class="choices">${opts.map(o=>`<button class="choice pressable" data-v="${o}">${o}</button>`).join("")}</div>`;
   $$("#qArea .choice").forEach(btn => btn.onclick = () => {
     if(btn.disabled) return;
@@ -1530,8 +1530,8 @@ function renderRule(it){
       S.concepts.resurface = isOne ? "ones" : "zeros";   // bring the card back
       save();
       setTimeout(()=>{
-        $("#qArea").innerHTML = `<div class="saybox"><div class="lede">${it.n} √ó ${isOne?1:0} = ${right}</div>
-          <div class="t-sm soft">${isOne ? "√ó 1 always leaves the number alone." : "√ó 0 always wipes it out to zero."} We'll go over that rule again next time ‚Äî it's a rule, not something to memorize.</div></div>
+        $("#qArea").innerHTML = `<div class="saybox"><div class="lede">${it.n} \u00d7 ${isOne?1:0} = ${right}</div>
+          <div class="t-sm soft">${isOne ? "\u00d7 1 always leaves the number alone." : "\u00d7 0 always wipes it out to zero."} We'll go over that rule again next time \u2014 it's a rule, not something to memorize.</div></div>
           <button class="btn btn-go pressable" id="rGo" style="margin-top:12px">Ok</button>`;
         $("#rGo").onclick = () => { SFX.tap(); advance(); };
       }, 460);
@@ -1547,7 +1547,7 @@ function renderChoice(it){
   $("#qArea").innerHTML = `
     <div class="qcard">
       <div class="up soft">Which one</div>
-      <div class="qtext">${a} <small>√ó</small> ${b}</div>
+      <div class="qtext">${a} <small>\u00d7</small> ${b}</div>
     </div>
     <div class="choices">${opts.map(o=>`<button class="choice pressable" data-v="${o}">${o}</button>`).join("")}</div>
     <button class="btn-ghost pressable" id="hintBtn" style="margin-top:10px">show me a trick</button>
@@ -1566,14 +1566,14 @@ function renderChoice(it){
 function renderRecall(it){
   const a = it.a, b = it.b;
   RUN.entry = ""; RUN.qStart = Date.now();
-  RUN.tFirst = null;        // ms to the first digit ‚Äî the retrieval moment
+  RUN.tFirst = null;        // ms to the first digit \u2014 the retrieval moment
   RUN.timingVoid = false;   // set by a hint, or by the app losing focus
   const speed = RUN.mode === "session" && S.set.speed && S.tablesDone.length > 0;
   $("#speedBar").hidden = !speed;
   $("#qArea").innerHTML = `
     <div class="qcard">
       <div class="up soft">${RUN.mode === "place" ? "Do you know this one?" : "Type it"}</div>
-      <div class="qtext">${a} <small>√ó</small> ${b}</div>
+      <div class="qtext">${a} <small>\u00d7</small> ${b}</div>
       <div class="answerbox empty" id="ansBox"></div>
     </div>
     <div class="pad">
@@ -1583,7 +1583,7 @@ function renderRecall(it){
       <button class="key key-go pressable" data-k="go">enter</button>
     </div>
     ${RUN.mode === "place"
-      ? `<button class="btn-ghost pressable" id="dunno" style="margin-top:10px">not sure yet ‚Äî skip</button>`
+      ? `<button class="btn-ghost pressable" id="dunno" style="margin-top:10px">not sure yet \u2014 skip</button>`
       : `<button class="btn-ghost pressable" id="hintBtn" style="margin-top:10px">show me a trick</button><div id="hintSlot"></div>`}`;
   if(RUN.mode !== "place") wireHint(a,b);
   else $("#dunno").onclick = () => { SFX.tap(); placeAnswer(it, false, true); };
@@ -1602,7 +1602,7 @@ function renderRecall(it){
   $$("#qArea .key").forEach(k => k.onclick = () => {
     const v = k.dataset.k;
     SFX.tap();
-    // clearing and retyping doesn't reset the clock ‚Äî she'd already recalled it
+    // clearing and retyping doesn't reset the clock -- she'd already recalled it
     if(v === "clr"){ RUN.entry = ""; buzz(6); draw(); return; }
     if(v === "go"){
       if(!RUN.entry.length || RUN.locked) return;
@@ -1676,7 +1676,7 @@ function onMiss(it, given){
   $("#qArea").innerHTML = `
     <div class="qcard">
       <div class="up soft">${pick(NEUTRAL)}</div>
-      <div class="qtext">${a} <small>√ó</small> ${b} <small>=</small> ${ans}</div>
+      <div class="qtext">${a} <small>\u00d7</small> ${b} <small>=</small> ${ans}</div>
     </div>
     <div class="saybox">
       <div class="lede">${tk.t}</div>
@@ -1729,7 +1729,7 @@ function endRun(){
   }
 
   const res = finishSession(RUN);
-  const learnedNames = RUN.mastered.map(k => { const p = fparts(k); return p[0]+" √ó "+p[1]; });
+  const learnedNames = RUN.mastered.map(k => { const p = fparts(k); return p[0]+" \u00d7 "+p[1]; });
   const seen = {};
   RUN.seq.slice(0, RUN.i+1).forEach(x => { if(x.k === "q") seen[x.f] = 1; });
   const practiced = Object.keys(seen).length;
@@ -1739,7 +1739,7 @@ function endRun(){
   else if(res.trophies.length) head = "You finished a whole table.";
   else if(RUN.mastered.length >= 2) head = "That's " + RUN.mastered.length + " new ones locked in.";
   else if(RUN.correct === RUN.answered) head = "Twelve for twelve.";
-  else head = pick(["that's a wrap","done ‚Äî that was two minutes","12 down"]);
+  else head = pick(["that's a wrap","done \u2014 that was two minutes","12 down"]);
 
   const canBox = S.coins >= ECON.BOX_COST;
   $("#doneArea").innerHTML = `
@@ -1748,16 +1748,16 @@ function endRun(){
     <div class="qcard" style="min-height:auto;gap:8px">
       <div class="up soft">Session done</div>
       <div class="display t-2xl" style="max-width:320px">${head}</div>
-      <div class="soft t-sm">${practiced} facts practiced${RUN.fastCount>=6?" ¬∑ "+RUN.fastCount+" of them instantly":""}</div>
+      <div class="soft t-sm">${practiced} facts practiced${RUN.fastCount>=6?" \u00b7 "+RUN.fastCount+" of them instantly":""}</div>
     </div>
 
     ${RUN.mastered.length ? `<div class="saybox" style="margin-top:14px">
       <div class="lede">Learned this session</div>
-      <div class="t-sm soft">${learnedNames.join(" ¬∑ ")}</div>
+      <div class="t-sm soft">${learnedNames.join(" \u00b7 ")}</div>
       <div class="t-sm" style="margin-top:8px">That's ${learnedCount()} of 66 you own outright.</div>
     </div>` : `<div class="saybox" style="margin-top:14px">
       <div class="lede">${learnedCount()} of 66 learned</div>
-      <div class="t-sm soft">Reps on the ones already in progress. That's how they stick ‚Äî nothing to see here, it's just working.</div>
+      <div class="t-sm soft">Reps on the ones already in progress. That's how they stick \u2014 nothing to see here, it's just working.</div>
     </div>`}
 
     <div class="card" style="margin-top:14px">
@@ -1772,7 +1772,7 @@ function endRun(){
       const sq = BY_ID[c.squishy];
       const prize = (S.goals.prize || "").trim();
       return `<div class="certificate" style="margin-top:16px">
-        <div class="up">Speed club ¬∑ ${today()}</div>
+        <div class="up">Speed club \u00b7 ${today()}</div>
         <div class="sqframe" style="height:130px;margin:6px auto">${sq ? SV(sq.art) : ""}</div>
         <div class="display t-2xl">${c.name}</div>
         <div class="t-sm soft" style="margin-top:6px;max-width:280px;margin-left:auto;margin-right:auto">
@@ -1809,7 +1809,7 @@ function endRun(){
 }
 
 /* ==========================================================================
-   8. BLIND BOX ‚Äî press, hold, deform, pop.
+   8. BLIND BOX -- press, hold, deform, pop.
    ========================================================================== */
 const BOX_ART = `
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -1876,7 +1876,7 @@ function renderBox(){
       </div>
       <div class="revealwrap" id="bxReveal" hidden></div>
     </div>
-    <div class="center soft t-sm" id="bxHintLine">hold it‚Ä¶</div>`;
+    <div class="center soft t-sm" id="bxHintLine">hold it\u2026</div>`;
   wireSqueeze();
 }
 
@@ -1916,7 +1916,7 @@ function wireSqueeze(){
     if(popped) return;
     e.preventDefault();
     pressing = true; last = performance.now(); buzzedAt = 0;
-    $("#bxHintLine").textContent = "keep going‚Ä¶";
+    $("#bxHintLine").textContent = "keep going\u2026";
     if(!raf) raf = requestAnimationFrame(loop);
   };
   const stop = () => {
@@ -1943,7 +1943,7 @@ function wireSqueeze(){
     lid.style.transform = "translateY(-120px) rotate(-22deg) scale(1.05)";
     lid.style.opacity = "0";
 
-    // particle puff ‚Äî soft, no confetti
+    // particle puff -- soft, no confetti
     if(!reduced()){
       const wrap = $("#bxPuffs");
       for(let i=0;i<16;i++){
@@ -1998,7 +1998,7 @@ function wireSqueeze(){
       <div class="rarityflag" style="background:${TIER_COLOR[sq.t]}">${TIER_LABEL[sq.t]}</div>
       <div class="display t-xl" style="margin-top:6px">${sq.n}</div>
       <div class="t-sm soft" style="margin-top:4px">${sq.bio}</div>
-      ${result.dup ? `<div class="t-sm" style="margin-top:8px">Already had this one ‚Äî turned into <b>+${result.refund}</b> coins.</div>` : ""}
+      ${result.dup ? `<div class="t-sm" style="margin-top:8px">Already had this one \u2014 turned into <b>+${result.refund}</b> coins.</div>` : ""}
     </div>`;
     const card = $("#revCard");
     if(!reduced()){
@@ -2039,13 +2039,13 @@ function renderShelf(){
   else if(shelfTab !== "all") list = list.filter(s => s.t === shelfTab);
 
   if(!list.length){
-    $("#shelfGrid").innerHTML = `<div class="card" style="grid-column:1/-1"><div class="t-sm soft">Nothing pinned yet. Tap any squishy you like and hit the pin ‚Äî it'll live up here.</div></div>`;
+    $("#shelfGrid").innerHTML = `<div class="card" style="grid-column:1/-1"><div class="t-sm soft">Nothing pinned yet. Tap any squishy you like and hit the pin \u2014 it'll live up here.</div></div>`;
     return;
   }
   $("#shelfGrid").innerHTML = list.map(s => {
     const have = S.coll[s.id];
     return `<button class="slot pressable ${have?"":"locked"}" data-id="${s.id}">
-      ${have && have.n > 1 ? `<span class="ct">√ó${have.n}</span>` : ""}
+      ${have && have.n > 1 ? `<span class="ct">\u00d7${have.n}</span>` : ""}
       ${have && have.fav ? `<span class="pin"><svg viewBox="0 0 20 20"><path d="M10 2l2.4 5 5.6.7-4 3.9 1 5.4L10 14.4 4.9 17l1-5.4-4-3.9L7.6 7z" fill="#5FC4BB" stroke="#1F3E3C" stroke-width="1.2"/></svg></span>` : ""}
       <div class="sqframe ${have?"":"silhouette"}">${SV(s.art)}</div>
       <div class="nm">${have ? s.n : (s.table ? "Table " + s.table : (s.milestone ? "Under " + s.milestone + "s" : "???"))}</div>
@@ -2065,10 +2065,10 @@ function openDetail(id){
       <div class="rarityflag" style="background:${TIER_COLOR[s.t]}">${TIER_LABEL[s.t]}</div>
       <div class="display t-2xl" style="margin-top:8px">${have ? s.n : "Not found yet"}</div>
       <div class="t-sm soft" style="margin-top:6px">${have ? s.bio
-        : s.table ? "Finish the " + s.table + "s and this one is yours. Guaranteed ‚Äî no box needed."
+        : s.table ? "Finish the " + s.table + "s and this one is yours. Guaranteed \u2014 no box needed."
         : s.milestone ? "Not in any box. Answer all 66 facts in under " + s.milestone + " seconds each and she turns up on her own."
         : "Still out there somewhere in a box."}</div>
-      ${have ? `<div class="t-sm faint" style="margin-top:10px">Found ${have.first}${have.n>1?" ¬∑ "+have.n+" copies":""}</div>` : ""}
+      ${have ? `<div class="t-sm faint" style="margin-top:10px">Found ${have.first}${have.n>1?" \u00b7 "+have.n+" copies":""}</div>` : ""}
     </div>
     <div class="stack" style="margin-top:16px">
       ${have ? `<button class="btn btn-sm pressable" id="favBtn">${have.fav?"Unpin from the front":"Pin to the front"}</button>` : ""}
@@ -2118,7 +2118,7 @@ function renderSettings(){
 
     ${storageOK ? "" : `<div class="card" style="margin-top:14px"><div class="t-sm">Heads up: this browser isn't letting the app save. Progress will vanish when you close the tab. Private browsing usually causes this.</div></div>`}
 
-    <div class="center faint t-xs" style="margin-top:20px">${APP_NAME} ¬∑ everything lives on this phone</div>
+    <div class="center faint t-xs" style="margin-top:20px">${APP_NAME} \u00b7 everything lives on this phone</div>
     <button class="btn-ghost pressable" id="grownLink" style="margin-top:8px">Grown-up view</button>`;
 
   function row(key,label,on,locked,note){
@@ -2154,7 +2154,7 @@ function renderSettings(){
       a.href = url; a.download = "squishy-squad-backup-" + today() + ".json";
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(()=>URL.revokeObjectURL(url), 3000);
-    }catch(e){ toast("Couldn't save a file ‚Äî use Copy instead"); }
+    }catch(e){ toast("Couldn't save a file \u2014 use Copy instead"); }
   };
   $("#impBtn").onclick = () => {
     const raw = $("#impBox").value.trim();
@@ -2195,7 +2195,7 @@ function renderSettings(){
 
 /* ============================ GROWN-UP VIEW ============================== */
 let grownMode = "box";      // "box" = Leitner state, "speed" = recall time
-const secs = ms => ms === null || ms === undefined ? "‚Äì" : (ms/1000).toFixed(1) + "s";
+const secs = ms => ms === null || ms === undefined ? "\u2013" : (ms/1000).toFixed(1) + "s";
 
 function renderGrown(){
   const days = Object.keys(S.stats.days).sort();
@@ -2214,20 +2214,20 @@ function renderGrown(){
 
   const factLine = k => {
     const f = S.facts[k], p = fparts(k);
-    return `${p[0]}√ó${p[1]} ‚Äî ${secs(recallMedian(k))} median ¬∑ box ${f.box} ¬∑ ${f.hits} correct ¬∑ ${(f.miss||0)} missed`;
+    return `${p[0]}\u00d7${p[1]} \u2014 ${secs(recallMedian(k))} median \u00b7 box ${f.box} \u00b7 ${f.hits} correct \u00b7 ${(f.miss||0)} missed`;
   };
 
   /* --- the grid, in whichever mode is selected --------------------------- */
-  let grid = `<table><tr><th>√ó</th>${N.map(n=>`<th>${n}</th>`).join("")}</tr>`;
+  let grid = `<table><tr><th>\u00d7</th>${N.map(n=>`<th>${n}</th>`).join("")}</tr>`;
   N.forEach(r => {
     grid += `<tr><th>${r}</th>` + N.map(c => {
       const k = fkey(r,c), f = S.facts[k];
       if(grownMode === "speed"){
         const m = recallMedian(k), fl = fluencyOf(k);
-        return `<td class="gcell f-${fl}">${r*c}<br><span style="opacity:.7">${m===null?"‚Äì":secs(m)}</span></td>`;
+        return `<td class="gcell f-${fl}">${r*c}<br><span style="opacity:.7">${m===null?"\u2013":secs(m)}</span></td>`;
       }
       const box = f ? f.box : 0;
-      return `<td class="gcell b${box}">${r*c}<br><span style="opacity:.6">${f ? "b"+box+(isLearned(k)?"‚úì":"") : "‚Äì"}</span></td>`;
+      return `<td class="gcell b${box}">${r*c}<br><span style="opacity:.6">${f ? "b"+box+(isLearned(k)?"\u2713":"") : "\u2013"}</span></td>`;
     }).join("") + "</tr>";
   });
   grid += "</table>";
@@ -2246,7 +2246,7 @@ function renderGrown(){
   const tSpark = tHist.length
     ? `<div class="spark">${tHist.map(h =>
         `<i style="height:${Math.max(4, Math.round(h.m/slowest*46))}px;background:#8FA98C" title="${h.d}: ${secs(h.m)}"></i>`
-      ).join("")}</div><div style="font-size:11px;color:#6b6b70;margin-top:4px">median recall time per session ‚Äî shorter is faster (${tHist.length} sessions)</div>`
+      ).join("")}</div><div style="font-size:11px;color:#6b6b70;margin-top:4px">median recall time per session \u2014 shorter is faster (${tHist.length} sessions)</div>`
     : `<div style="font-size:12px;color:#6b6b70">Not enough typed answers yet.</div>`;
 
   $("#grownArea").innerHTML = `<div class="grown">
@@ -2254,7 +2254,7 @@ function renderGrown(){
     <div class="gstat">
       <div><b>${learnedCount()}/66</b>facts learned</div>
       <div><b>${buckets.fluent.length}/66</b>fluent (under ${FLUENCY.FAST_MS/1000}s)</div>
-      <div><b>${overallMedian===null?"‚Äì":secs(overallMedian)}</b>median recall</div>
+      <div><b>${overallMedian===null?"\u2013":secs(overallMedian)}</b>median recall</div>
       <div><b>${days.length}</b>days practiced</div>
       <div><b>${S.sess}</b>sessions</div>
       <div><b>${S.stats.q}</b>questions</div>
@@ -2262,16 +2262,16 @@ function renderGrown(){
       <div><b>${S.streak}</b>day streak (best ${S.bestStreak})</div>
     </div>
     <div style="font-size:12px;color:#6b6b70;margin-top:6px">
-      Tables unlocked: ${S.unlocked.join(", ") || "‚Äî"} ¬∑ finished: ${S.tablesDone.join(", ") || "none"} ¬∑
-      rules taught: ${S.concepts.ones?"√ó1":"‚Äî"} ${S.concepts.zeros?"√ó0":"‚Äî"} ¬∑
-      collection ${Object.keys(S.coll).length}/${SQUISHIES.length} ¬∑ ${S.boxes} boxes opened
+      Tables unlocked: ${S.unlocked.join(", ") || "\u2014"} \u00b7 finished: ${S.tablesDone.join(", ") || "none"} \u00b7
+      rules taught: ${S.concepts.ones?"\u00d71":"\u2014"} ${S.concepts.zeros?"\u00d70":"\u2014"} \u00b7
+      collection ${Object.keys(S.coll).length}/${SQUISHIES.length} \u00b7 ${S.boxes} boxes opened
     </div>
 
     <h2>Recall speed</h2>
     <div style="font-size:12px;color:#3a3a3f;line-height:1.55">
       Timed silently on typed answers only, measured to her first keypress, and
       judged on the median of the last ${FLUENCY.WINDOW}. A fact she gets right but
-      slowly is capped at box ${FLUENCY.CAP_BOX} ‚Äî it keeps coming back every couple of
+      slowly is capped at box ${FLUENCY.CAP_BOX} \u2014 it keeps coming back every couple of
       sessions until it's quick. It still counts as learned on her side (being
       right is what earns that); speed only decides how often she sees it again.
       She never sees any of this.
@@ -2286,7 +2286,7 @@ function renderGrown(){
     <h2>Real-world prize</h2>
     <div style="font-size:12px;color:#3a3a3f;line-height:1.55">
       Switch this on and she gets one card on her home screen showing how many facts
-      are in the club ‚Äî never how many are short, never which ones, never a time on
+      are in the club \u2014 never how many are short, never which ones, never a time on
       screen. Two rungs, in order: every fact under 10s, then every fact under 5s.
       A fact only counts once she's typed it at least ${CLUB_MIN_SAMPLES} times, so a club can't be
       cleared on facts the app never really tested. Once earned it's stamped with the
@@ -2319,10 +2319,10 @@ function renderGrown(){
       const named = out.filter(k => S.facts[k] && recallMedian(k) !== null);
       const untested = out.filter(k => !S.facts[k] || recallMedian(k) === null);
       return `<div style="font-size:12px;color:#3a3a3f;margin-top:10px">
-          Holding up the <b>${a.name}</b> ‚Äî ${out.length} fact${out.length===1?"":"s"}:</div>
+          Holding up the <b>${a.name}</b> \u2014 ${out.length} fact${out.length===1?"":"s"}:</div>
         ${named.length ? `<div class="glist">${named.slice(0,16).map(k=>{
           const p = fparts(k);
-          return `${p[0]}√ó${p[1]} ‚Äî ${secs(recallMedian(k))}`;
+          return `${p[0]}\u00d7${p[1]} \u2014 ${secs(recallMedian(k))}`;
         }).join("<br>")}</div>` : ""}
         ${untested.length ? `<div style="font-size:12px;color:#6b6b70;margin-top:6px">
           plus ${untested.length} she hasn't typed ${CLUB_MIN_SAMPLES}+ times yet (they'll come round on their own)</div>` : ""}`;
@@ -2335,22 +2335,22 @@ function renderGrown(){
     </div>
     ${grid}
     ${grownMode === "speed" ? `<div class="gkey">
-      <span class="f-fluent">under ${FLUENCY.FAST_MS/1000}s ‚Äî knows it</span>
-      <span class="f-working">${FLUENCY.FAST_MS/1000}‚Äì${FLUENCY.SLOW_MS/1000}s ‚Äî working it out</span>
-      <span class="f-counting">${FLUENCY.SLOW_MS/1000}s+ ‚Äî likely counting</span>
+      <span class="f-fluent">under ${FLUENCY.FAST_MS/1000}s \u2014 knows it</span>
+      <span class="f-working">${FLUENCY.FAST_MS/1000}\u2013${FLUENCY.SLOW_MS/1000}s \u2014 working it out</span>
+      <span class="f-counting">${FLUENCY.SLOW_MS/1000}s+ \u2014 likely counting</span>
       <span class="f-untested">no typed answer yet</span>
     </div>` : `<div class="gkey">
       <span class="b0">untouched</span><span class="b1">box 1</span><span class="b2">box 2</span>
       <span class="b3">box 3</span><span class="b4">box 4</span><span class="b5">box 5</span>
-      <span>‚úì = learned (4th rung, 3 correct on 3 separate days)</span>
+      <span>\u2713 = learned (4th rung, 3 correct on 3 separate days)</span>
       <span>a capped cell shows the scheduling box, which may sit below the rung she's earned</span>
     </div>`}
-    <div style="font-size:11px;color:#6b6b70;margin-top:6px">Grid is mirrored ‚Äî a√ób and b√óa are one fact internally.</div>
+    <div style="font-size:11px;color:#6b6b70;margin-top:6px">Grid is mirrored \u2014 a\u00d7b and b\u00d7a are one fact internally.</div>
 
     <h2>Still counting these out</h2>
     ${buckets.counting.length
       ? `<div class="glist">${byTime(buckets.counting).slice(0,14).map(factLine).join("<br>")}</div>`
-      : `<div style="font-size:12px;color:#6b6b70">None ‚Äî nothing is taking her ${FLUENCY.SLOW_MS/1000} seconds or more.</div>`}
+      : `<div style="font-size:12px;color:#6b6b70">None \u2014 nothing is taking her ${FLUENCY.SLOW_MS/1000} seconds or more.</div>`}
 
     <h2>Nearly there</h2>
     ${buckets.working.length
@@ -2376,8 +2376,8 @@ function renderGrown(){
     <h2>Recent days</h2>
     <div class="glist">${days.slice(-10).reverse().map(d=>{
       const x = S.stats.days[d];
-      return `${d} ‚Äî ${x.c}/${x.q} (${Math.round(x.c/Math.max(1,x.q)*100)}%)`;
-    }).join("<br>") || "‚Äî"}</div>
+      return `${d} \u2014 ${x.c}/${x.q} (${Math.round(x.c/Math.max(1,x.q)*100)}%)`;
+    }).join("<br>") || "\u2014"}</div>
   </div>`;
 
   $$("#grownArea .gtab").forEach(b => b.onclick = () => { grownMode = b.dataset.m; renderGrown(); });
@@ -2423,7 +2423,7 @@ function wireChrome(){
   ["pointerup","pointerleave","pointercancel"].forEach(e => brand.addEventListener(e, up));
 
   // if the phone locks or she switches apps mid-question, the stopwatch is
-  // measuring her lunch break ‚Äî throw that reading away, keep the answer
+  // measuring her lunch break -- throw that reading away, keep the answer
   document.addEventListener("visibilitychange", () => {
     if(document.hidden && RUN) RUN.timingVoid = true;
   });
