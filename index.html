@@ -2429,6 +2429,19 @@ function wireChrome(){
   });
 }
 
+/* Offline. sw.js has to be its own file -- browsers refuse to register a
+   service worker from an inline script -- so this is the one place the app
+   isn't a single file. Everything still works without it; you just lose the
+   ability to open the app with no signal. */
+function registerSW(){
+  if(!("serviceWorker" in navigator)) return;
+  // service workers are https-only (localhost excepted), and never file://
+  if(location.protocol !== "https:" && location.hostname !== "localhost") return;
+  try{
+    navigator.serviceWorker.register("./sw.js").catch(function(){});
+  }catch(e){}
+}
+
 /* home-screen icon: drawn at runtime so the file stays self-contained */
 function makeTouchIcon(){
   try{
@@ -2463,6 +2476,7 @@ function boot(){
   applyMotionAttr();
   mqReduce.addEventListener ? mqReduce.addEventListener("change", applyMotionAttr) : mqReduce.addListener(applyMotionAttr);
   makeTouchIcon();
+  registerSW();
   wireChrome();
   renderHome();
   show("home");
