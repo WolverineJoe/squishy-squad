@@ -544,6 +544,7 @@ const FLUENCY = {
   MAX_MS:    60000,   // longer than this is a distraction, not an answer
   KEEP:          5,   // recall times retained per fact
   WINDOW:        3,   // how many of them the median looks at
+  MIN_TIMED:     2,   // timed answers needed before speed counts as proven
   CAP_BOX:       3,   // ceiling for a fact that isn't fluent yet
   /* Escape hatch. If she's answered a fact correctly this many times and it's
      still not quick, stop holding it down -- endless drilling of one fact is
@@ -1063,11 +1064,16 @@ function gradeFact(k, ok, run, ms){
       f.rt.push(ms);
       if(f.rt.length > FLUENCY.KEEP) f.rt = f.rt.slice(-FLUENCY.KEEP);
       if(run.times) run.times.push(ms);
-      // right, but still working it out: keep it in circulation rather than
-      // letting it graduate. Never a demotion -- just a scheduling ceiling.
-      // f.peak is untouched, so she still gets credit for being right.
-      if(!isFluent(k) && f.hits < FLUENCY.PATIENCE) f.box = Math.min(f.box, FLUENCY.CAP_BOX);
     }
+    /* A fact only escapes the short rotation once it is QUICK, and quick has
+       to be shown more than once -- a single fast answer is a coin flip, and a
+       fact placed by the opening assessment has no timings at all yet. Until
+       then it stays at CAP_BOX and keeps coming back every couple of sessions.
+       This runs on every correct answer, not only timed ones, so an untimed
+       rep can't sneak a fact past the gate. f.peak is untouched, so she still
+       gets full credit for being right. */
+    const proven = f.rt.length >= FLUENCY.MIN_TIMED && isFluent(k);
+    if(!proven && f.hits < FLUENCY.PATIENCE) f.box = Math.min(f.box, FLUENCY.CAP_BOX);
     f.due = S.sess + INTERVAL[f.box];
     f.hits++;
     const d = today();
@@ -1219,7 +1225,13 @@ function applyPlacement(results){
     });
     if(r.ok){
       const d = today();
-      S.facts[r.f] = {box:3, due:S.sess + INTERVAL[3], hits:1, days:[d], stage:2, miss:0};
+      /* Getting it right here proves she KNOWS it, not that she knows it
+         fast -- these answers aren't timed. So it starts ahead of a brand new
+         fact (no meet card, no multiple choice, straight to typing it) but
+         still comes round next session, and keeps coming round until it is
+         quick. That repetition is the point. */
+      S.facts[r.f] = {box:2, peak:2, due:S.sess + INTERVAL[2], hits:1, days:[d],
+                      stage:2, miss:0, rt:[]};
     }
   });
   // Skip ahead only along the unlock order, never past a table she stumbled
@@ -1714,7 +1726,8 @@ function endRun(){
       <div class="qcard" style="min-height:auto">
         <div class="up soft">Here's the thing</div>
         <div class="display t-2xl">You already knew ${got}.</div>
-        <p class="soft t-sm" style="max-width:310px">Out of 20. So that's ${got} fact${got===1?"":"s"} you never have to sit through again. The app skips them.</p>
+        <p class="soft t-sm" style="max-width:310px">Out of 20. Those ones start way ahead \u2014 you're not learning them from scratch, you already have them.</p>
+        <p class="soft t-sm" style="max-width:310px">They'll still come round now and then. Knowing it is one thing; knowing it <b>instantly</b> is the thing we're going for, and that only comes from seeing it again.</p>
         <p class="soft t-sm" style="max-width:310px">From here it's 12 questions at a time. Two minutes. That's it.</p>
       </div>
       <div class="stack" style="margin-top:16px">
