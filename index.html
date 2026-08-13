@@ -674,7 +674,19 @@ const SQUISHIES = [
  art:`<path d="M50 12l30 22-11 42H31L20 34z" fill="#9FE0EE"/><path d="M50 12l30 22-30 42-30-42z" fill="#C4EEF7"/><path d="M20 34h60M50 12v64" stroke="#7FC4D6" stroke-width="2"/>${sheen(38,32,9,5)}${EYE.dot(42,44)}${EYE.dot(58,44)}${MOUTH.smile(50,54,10)}${BLUSH(53,20,"#6FB2C6")}<text x="50" y="94" font-size="13" font-weight="800" text-anchor="middle" fill="${INK}" font-family="sans-serif">10s</text>`},
 
 {id:"tro5",n:"High Five",t:"epic",table:5,bio:"Has never left anybody hanging. Not once.",
- art:`<path d="M32 84V44a7 7 0 0 1 14 0V26a6 6 0 0 1 12 0v18a6 6 0 0 1 12 0v34z" fill="#FBD08A"/><path d="M32 52c-6-2-12 2-10 8l6 18c2 6 6 8 12 8z" fill="#FBD08A"/><g stroke="#DFA85C" stroke-width="2" fill="none" stroke-linecap="round"><path d="M46 44V30M58 44V28M70 48v-2"/></g>${EYE.dot(44,64,3.8)}${EYE.dot(60,64,3.8)}${MOUTH.smile(52,72,9)}${BLUSH(71,17,"#E0954E")}<text x="50" y="95" font-size="13" font-weight="800" text-anchor="middle" fill="${INK}" font-family="sans-serif">5s</text>`},
+ /* Four separate fingers, all within a few px of each other in height, drawn
+    behind the palm. The first version was one silhouette with a single bump
+    towering 18px over the rest, dead centre -- which read as exactly the
+    gesture you would not want on a 6th grader's maths app. */
+ art:`<rect x="14" y="53" width="10" height="27" rx="5" fill="#F2BE74" transform="rotate(-40 19 66)"/>
+<rect x="30" y="31" width="10" height="31" rx="5" fill="#FBD08A"/>
+<rect x="42" y="28" width="10" height="34" rx="5" fill="#FBD08A"/>
+<rect x="54" y="30" width="10" height="32" rx="5" fill="#FBD08A"/>
+<rect x="66" y="37" width="9" height="25" rx="4.5" fill="#FBD08A"/>
+<rect x="27" y="54" width="49" height="30" rx="13" fill="#FBD08A"/>
+${shade(51,79,20,5,"#DFA85C")}${sheen(37,61,9,5)}
+${EYE.dot(45,66,3.8)}${EYE.dot(59,66,3.8)}${MOUTH.smile(52,73,9)}${BLUSH(72,17,"#E0954E")}
+<text x="50" y="96" font-size="13" font-weight="800" text-anchor="middle" fill="${INK}" font-family="sans-serif">5s</text>`},
 
 {id:"tro11",n:"Twinsies",t:"epic",table:11,bio:"Say a digit twice and they show up. Every time.",
  art:`<rect x="26" y="24" width="20" height="56" rx="10" fill="#5FC4BB"/><rect x="54" y="24" width="20" height="56" rx="10" fill="#5FC4BB"/>${sheen(33,34,6,4)}${sheen(61,34,6,4)}${EYE.dot(32,46,3.2)}${EYE.dot(40,46,3.2)}${MOUTH.smile(36,56,6)}${EYE.dot(60,46,3.2)}${EYE.dot(68,46,3.2)}${MOUTH.smile(64,56,6)}<text x="50" y="94" font-size="13" font-weight="800" text-anchor="middle" fill="${INK}" font-family="sans-serif">11s</text>`},
