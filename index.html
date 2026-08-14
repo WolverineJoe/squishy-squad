@@ -632,7 +632,19 @@ const SQUISHIES = [
  art:`<path d="M40 88V44a10 10 0 0 1 20 0v44z" fill="#7FBF7A"/><path d="M40 60H30a8 8 0 0 1-8-8v-6a6 6 0 0 1 12 0v2h6z" fill="#7FBF7A"/><path d="M60 68h9a8 8 0 0 0 8-8v-8a6 6 0 0 0-12 0v4h-5z" fill="#7FBF7A"/><path d="M32 84h36a5 5 0 0 1 5 5v3H27v-3a5 5 0 0 1 5-5z" fill="#D9A184"/><g stroke="#4E8C56" stroke-width="1.8" stroke-linecap="round"><path d="M46 50v-4M54 58v-4M46 66v-4M54 74v-4M26 50v-3M70 58v-3"/></g><circle cx="50" cy="34" r="7" fill="#5FC4BB"/><circle cx="50" cy="34" r="3" fill="#FFE38A"/>${EYE.dot(44,58,3.6)}${EYE.dot(56,58,3.6)}${MOUTH.smile(50,66,8)}`},
 
 {id:"berryslice",n:"Berry Slice",t:"rare",bio:"One slice of cake, fully self-actualized.",
- art:`<path d="M24 78L50 26l26 52z" fill="#FDEFE2"/><path d="M32 62L50 26l18 36z" fill="#5FC4BB"/><path d="M28 70h44l3 8H25z" fill="#F5E2CE"/><path d="M50 26l-5-8h10z" fill="#E88FA8"/><circle cx="50" cy="20" r="7" fill="#EF6E86"/><path d="M47 14l3-4 3 4z" fill="#7FBF6A"/>${EYE.dot(43,66,3.8)}${EYE.dot(57,66,3.8)}${MOUTH.smile(50,73,8)}${BLUSH(72,17)}`},
+ /* Horizontal layers are the whole job here. A plain wedge with one big
+    triangle inside it is a party hat -- which is exactly what this became when
+    the teal palette swap caught the pink jam layer and recoloured it. Bands of
+    sponge / jam / cream, cut to follow the wedge, read as cake at any size. */
+ art:`<path d="M50 28l28 48H22z" fill="#F7D9A8"/>
+<path d="M40.7 44H59.3L62.3 49H37.7Z" fill="#EF6E86"/>
+<path d="M26.7 68H73.3L75.7 72H24.3Z" fill="#FFF6EC"/>
+<path d="M24.3 72H75.7L78 76H22Z" fill="#E8C79A"/>
+<circle cx="50" cy="22" r="7.5" fill="#EF6E86"/>
+<path d="M45.5 15.5L50 10l4.5 5.5z" fill="#7FBF6A"/>
+<g fill="#FFF2F4" opacity=".9"><circle cx="47.4" cy="20" r="1"/><circle cx="52.6" cy="22.6" r="1"/><circle cx="49.2" cy="25.4" r="1"/></g>
+${sheen(42,38,5.5,3)}
+${EYE.dot(43,57,3.8)}${EYE.dot(57,57,3.8)}${MOUTH.smile(50,63,10)}${BLUSH(62,13)}`},
 
 {id:"spookie",n:"Spookie",t:"rare",bio:"Terrifying for about half a second, then just wants snacks.",
  art:`<path d="M22 52a28 28 0 0 1 56 0v34l-9-7-9 7-9-7-9 7-9-7-11 7z" fill="#F6F4FF"/>${shade(50,72,22,8,"#DAD5F0")}${sheen(36,36)}${EYE.wide(40,48,6.5)}${EYE.wide(60,48,6.5)}${MOUTH.oh(50,62,9)}${BLUSH(60,24,"#C0B7E8")}`},
