@@ -678,7 +678,12 @@ const SQUISHIES = [
     behind the palm. The first version was one silhouette with a single bump
     towering 18px over the rest, dead centre -- which read as exactly the
     gesture you would not want on a 6th grader's maths app. */
- art:`<rect x="14" y="53" width="10" height="27" rx="5" fill="#F2BE74" transform="rotate(-40 19 66)"/>
+ /* The thumb is a lobe drawn BEHIND the palm in the SAME fill, so the two
+    merge into one silhouette. As a separate rect in a darker tone it only met
+    the palm along its bottom third -- a 19px gap at the top -- and the colour
+    change made the seam obvious. Never mind the geometry: two shapes that are
+    meant to be one piece of foam have to share a fill. */
+ art:`<ellipse cx="24" cy="70" rx="6.5" ry="13" fill="#FBD08A" transform="rotate(-38 24 70)"/>
 <rect x="30" y="31" width="10" height="31" rx="5" fill="#FBD08A"/>
 <rect x="42" y="28" width="10" height="34" rx="5" fill="#FBD08A"/>
 <rect x="54" y="30" width="10" height="32" rx="5" fill="#FBD08A"/>
